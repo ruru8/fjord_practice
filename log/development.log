@@ -734,3 +734,780 @@ Migrating to CreateComments (20190613061648)
   ↳ bin/rails:9
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+Started GET "/reports" for ::1 at 2019-06-13 15:29:00 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chiharu.yasuda/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ReportsController#index as HTML
+  Rendering reports/index.html.erb within layouts/application
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT "reports".* FROM "reports"[0m
+  ↳ app/views/reports/index.html.erb:15
+  Rendered reports/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 112ms (Views: 103.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reports/new" for ::1 at 2019-06-13 15:29:02 +0900
+Processing by ReportsController#new as HTML
+  Rendering reports/new.html.erb within layouts/application
+  Rendered reports/_form.html.erb (2.8ms)
+  Rendered reports/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 28ms (Views: 21.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/reports" for ::1 at 2019-06-13 15:29:19 +0900
+Processing by ReportsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rbbELtZ1tzf4ceEMCHfJcrt82LrF4UtDHWxRBZ9Jy0AY66DsTX28K+AsKGYZzrXHhk3+UKxHrZCyMmspCvoiyg==", "report"=>{"title"=>"初めての日報", "content"=>"今日は頑張った"}, "commit"=>"Create Report"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reports_controller.rb:30
+  [1m[36mReport Create (0.5ms)[0m  [1m[32mINSERT INTO "reports" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "初めての日報"], ["content", "今日は頑張った"], ["created_at", "2019-06-13 06:29:19.404173"], ["updated_at", "2019-06-13 06:29:19.404173"]]
+  ↳ app/controllers/reports_controller.rb:30
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/reports_controller.rb:30
+Redirected to http://localhost:3000/reports/1
+Completed 302 Found in 4ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:29:19 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (129.9ms)
+Completed 500 Internal Server Error in 133ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `report_comments_path' for #<#<Class:0x00007f97e7b3d770>:0x00007f97eee131c8>
+Did you mean?  report_path):
+    28:   </p>
+    29: <% end %>
+    30: <br>
+    31: <%= form_for( [@report, @report.comments.build] ) do |f| %>
+    32:   <p>
+    33:     <strong><%= t :name %></strong>
+    34:     <%= f.text_field :name %>
+  
+app/views/reports/show.html.erb:31:in `_app_views_reports_show_html_erb__2821452544965042779_70145262263560'
+Started GET "/reports/1" for ::1 at 2019-06-13 15:30:03 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (15.4ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `body' for #<Comment:0x00007f97e7aac158>):
+    35:   </p>
+    36: 
+    37:   <p>
+    38:     <%= f.text_area :body, cols: 30, rows: 5 %>
+    39:   </p>
+    40: 
+    41:   <p>
+  
+app/views/reports/show.html.erb:38:in `block in _app_views_reports_show_html_erb__2821452544965042779_70145223914780'
+app/views/reports/show.html.erb:31:in `_app_views_reports_show_html_erb__2821452544965042779_70145223914780'
+Started GET "/reports/1" for ::1 at 2019-06-13 15:30:24 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/reports/1/comments" for ::1 at 2019-06-13 15:30:34 +0900
+  
+SyntaxError (/Users/chiharu.yasuda/my_web_apps/books_app/app/controllers/comments_controller.rb:14: syntax error, unexpected tIDENTIFIER, expecting end
+...redirect_to @commentable notice: 'Comment was successfully c...
+...                         ^~~~~~
+/Users/chiharu.yasuda/my_web_apps/books_app/app/controllers/comments_controller.rb:20: syntax error, unexpected tIDENTIFIER, expecting end
+...redirect_to @commentable notice: 'Comment was successfully d...
+...                         ^~~~~~):
+  
+app/controllers/comments_controller.rb:14: syntax error, unexpected tIDENTIFIER, expecting end
+app/controllers/comments_controller.rb:20: syntax error, unexpected tIDENTIFIER, expecting end
+Started GET "/reports/1" for ::1 at 2019-06-13 15:31:16 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 45ms (Views: 33.7ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/reports/1/comments" for ::1 at 2019-06-13 15:31:29 +0900
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/sQI9LzRywzaZGgndEmrJVl2GfwJUhNpcEGRySTLyE6heSSZODENBjO246sm/85GaMnbOjB/pVX6BITYdUPk0A==", "comment"=>{"name"=>"いか", "content"=>"おつかれさま"}, "commit"=>"Create Comment", "report_id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:31
+Unpermitted parameter: :content
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("name", "commentable_id", "commentable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "いか"], ["commentable_id", 1], ["commentable_type", "Report"], ["created_at", "2019-06-13 06:31:29.313084"], ["updated_at", "2019-06-13 06:31:29.313084"]]
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:13
+Redirected to http://localhost:3000/reports/1
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:31:29 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (5.5ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `body' for #<Comment:0x00007f97e767a0f8>):
+    23:   </p>
+    24:    
+    25:   <p>
+    26:     <%= comment.body %>
+    27:     <%= link_to '[x]', report_comment_path(@report, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+    28:   </p>
+    29: <% end %>
+  
+app/views/reports/show.html.erb:26:in `block in _app_views_reports_show_html_erb__2821452544965042779_70145215678540'
+app/views/reports/show.html.erb:18:in `_app_views_reports_show_html_erb__2821452544965042779_70145215678540'
+Started GET "/reports/1" for ::1 at 2019-06-13 15:31:43 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:32:00 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:32:01 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 18ms (Views: 16.5ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/reports/1/comments/1" for ::1 at 2019-06-13 15:32:05 +0900
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"gy9wjgPVT9j3wgtUzeWb+k/B84T9Ldh2KtjbJ+Is4cDcklzjhzWJ0h4QgNifU/6Zfn4xQsQAbkqgnc42s6TNXg==", "report_id"=>"1", "id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:31
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ? AND "comments"."id" = ? LIMIT ?[0m  [["commentable_id", 1], ["commentable_type", "Report"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:18
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[36mComment Destroy (0.3ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:19
+Redirected to http://localhost:3000/reports/1
+Completed 302 Found in 4ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:32:05 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/reports/1/comments" for ::1 at 2019-06-13 15:32:17 +0900
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MvsZUwvbzVDfgto3kSDNmnDfVm4qaDew+j+WCXGZWRBtRjU+jzsLWjZQUbvDlqj5QWCUqBNFgYxweoMYIBF1jg==", "comment"=>{"name"=>"いか", "content"=>"えらいです"}, "commit"=>"Create Comment", "report_id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:31
+Unpermitted parameter: :content
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[36mComment Create (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("name", "commentable_id", "commentable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "いか"], ["commentable_id", 1], ["commentable_type", "Report"], ["created_at", "2019-06-13 06:32:17.316143"], ["updated_at", "2019-06-13 06:32:17.316143"]]
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:13
+Redirected to http://localhost:3000/reports/1
+Completed 302 Found in 6ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:32:17 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 41ms (Views: 38.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:33:27 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:33:28 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:33:28 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:36:06 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 92ms (Views: 90.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:36:07 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:36:07 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:36:07 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 18ms (Views: 16.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:36:07 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 20ms (Views: 17.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:36:38 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 40ms (Views: 38.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books" for ::1 at 2019-06-13 15:38:06 +0900
+Processing by BooksController#index as HTML
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:17
+  Rendered books/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 32ms (Views: 25.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:38:09 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books/7/edit" for ::1 at 2019-06-13 15:38:13 +0900
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/edit.html.erb within layouts/application
+  Rendered books/_form.html.erb (3.3ms)
+  Rendered books/edit.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 25ms (Views: 22.3ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/books/7" for ::1 at 2019-06-13 15:38:21 +0900
+Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5OgKSntsVD+p9U5WqGBqr2ETmH+RcQr+Zf9Ac2tHyb161QW62bGeNOIhobyc6LDSEkHQHKlP6qysbV4QrFheKA==", "book"=>{"title"=>"あひるの空", "memo"=>"バスケット漫画", "author"=>""}, "commit"=>"Update Book", "id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/books_controller.rb:44
+  [1m[36mBook Update (0.4ms)[0m  [1m[33mUPDATE "books" SET "memo" = ?, "updated_at" = ? WHERE "books"."id" = ?[0m  [["memo", "バスケット漫画"], ["updated_at", "2019-06-13 06:38:21.185403"], ["id", 7]]
+  ↳ app/controllers/books_controller.rb:44
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/books_controller.rb:44
+Redirected to http://localhost:3000/books/7
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:38:21 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books" for ::1 at 2019-06-13 15:38:23 +0900
+Processing by BooksController#index as HTML
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:17
+  Rendered books/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:38:26 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/books/7/comments" for ::1 at 2019-06-13 15:38:33 +0900
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6ZbVGVdA4CmQB651x+DTjRiRvMRMMfxC/XMvgJbrdiatmNqOmhWFIBzIMa/lOSdjM0+7YG6SYqkQDGjFNw+U/A==", "comment"=>{"name"=>"s", "content"=>"それ好き"}, "commit"=>"Create Comment", "book_id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:31
+Unpermitted parameter: :content
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("name", "commentable_id", "commentable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "s"], ["commentable_id", 7], ["commentable_type", "Book"], ["created_at", "2019-06-13 06:38:33.241273"], ["updated_at", "2019-06-13 06:38:33.241273"]]
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:13
+Redirected to http://localhost:3000/books/7
+Completed 302 Found in 5ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:38:33 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 19ms (Views: 17.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:39:07 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (6.1ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `contents' for #<Comment:0x00007f97e7bd4fa8>
+Did you mean?  content
+               content?
+               content=):
+    33:   </p>
+    34:    
+    35:   <p>
+    36:     <%= comment.contents %>
+    37:     <%= link_to '[x]', book_comment_path(@book, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+    38:   </p>
+    39: <% end %>
+  
+app/views/books/show.html.erb:36:in `block in _app_views_books_show_html_erb__3444401835548158300_70145267779500'
+app/views/books/show.html.erb:28:in `_app_views_books_show_html_erb__3444401835548158300_70145267779500'
+Started GET "/books/7" for ::1 at 2019-06-13 15:39:13 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:40:31 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `body' for #<Comment:0x00007f97e76f3980>):
+    33:   </p>
+    34:    
+    35:   <p>
+    36:     <%= comment.body %>
+    37:     <%= link_to '[x]', book_comment_path(@book, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+    38:   </p>
+    39: <% end %>
+  
+app/views/books/show.html.erb:36:in `block in _app_views_books_show_html_erb__3444401835548158300_70145261390180'
+app/views/books/show.html.erb:28:in `_app_views_books_show_html_erb__3444401835548158300_70145261390180'
+Started GET "/books/7" for ::1 at 2019-06-13 15:40:42 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 18ms (Views: 15.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:41:56 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 36ms (Views: 24.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:41:59 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 19ms (Views: 16.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:42:03 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:42:20 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 34ms (Views: 22.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:42:24 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 20ms (Views: 18.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books" for ::1 at 2019-06-13 15:42:28 +0900
+Processing by BooksController#index as HTML
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:17
+  Rendered books/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books" for ::1 at 2019-06-13 15:42:29 +0900
+Processing by BooksController#index as HTML
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:17
+  Rendered books/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 21ms (Views: 19.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:42:30 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 45ms (Views: 42.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:42:54 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:42:54 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 21ms (Views: 19.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:42:54 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/books/7/comments" for ::1 at 2019-06-13 15:43:04 +0900
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ln7UZPlMlKlmq2gfeolHdfINj9iXHxhp3kGEhEz5QYLJw/gJfaxSo49545MoPyIWw7JNHq4yrlVUBJGVHXFtHA==", "comment"=>{"name"=>"いか", "content"=>"楽しいよね"}, "commit"=>"Create Comment", "book_id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:31
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("name", "content", "commentable_id", "commentable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "いか"], ["content", "楽しいよね"], ["commentable_id", 7], ["commentable_type", "Book"], ["created_at", "2019-06-13 06:43:04.613676"], ["updated_at", "2019-06-13 06:43:04.613676"]]
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:13
+Redirected to http://localhost:3000/books/7
+Completed 302 Found in 5ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:43:04 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/books/7/comments/3" for ::1 at 2019-06-13 15:43:06 +0900
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"DspCq3nw6xyLBI2Cw1pmcQBfwcCqUgtfARY1IUVmEK1Rd27G/RAtFmLWBg6R7AMSMeADBpN/vWOLUyAwFO48Mw==", "book_id"=>"7", "id"=>"3"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:31
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ? AND "comments"."id" = ? LIMIT ?[0m  [["commentable_id", 7], ["commentable_type", "Book"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[36mComment Destroy (0.3ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:19
+Redirected to http://localhost:3000/books/7
+Completed 302 Found in 4ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/books/7" for ::1 at 2019-06-13 15:43:06 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:67
+  Rendering books/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Book"]]
+  ↳ app/views/books/show.html.erb:28
+  Rendered books/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/reports/1/comments/2" for ::1 at 2019-06-13 15:43:15 +0900
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"V/i8cfoT98Sr1+fk0p8lWbOiDRObvfWtNvXlS0nma3EIRZAcfvMxzkIFbGiAKUA6gh3P1aKQQ5G8sPBaGG5H7w==", "report_id"=>"1", "id"=>"2"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:31
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ? AND "comments"."id" = ? LIMIT ?[0m  [["commentable_id", 1], ["commentable_type", "Report"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:18
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[36mComment Destroy (0.3ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:19
+Redirected to http://localhost:3000/reports/1
+Completed 302 Found in 12ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:43:15 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/reports/1/comments" for ::1 at 2019-06-13 15:43:24 +0900
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DQN8J0QqNOYZTllC5FPeU2yYvtAisQdBJKQgix3kceNSvlBKwMry7PCc0s625bswXSd8FhucsX2u4TWaTGxdfQ==", "comment"=>{"name"=>"たこ", "content"=>"おつかれさま"}, "commit"=>"Create Comment", "report_id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:31
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[36mComment Create (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("name", "content", "commentable_id", "commentable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "たこ"], ["content", "おつかれさま"], ["commentable_id", 1], ["commentable_type", "Report"], ["created_at", "2019-06-13 06:43:24.861806"], ["updated_at", "2019-06-13 06:43:24.861806"]]
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:13
+Redirected to http://localhost:3000/reports/1
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/reports/1" for ::1 at 2019-06-13 15:43:24 +0900
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reports_controller.rb:67
+  Rendering reports/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 1], ["commentable_type", "Report"]]
+  ↳ app/views/reports/show.html.erb:18
+  Rendered reports/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 22ms (Views: 19.9ms | ActiveRecord: 0.2ms)
+
+
