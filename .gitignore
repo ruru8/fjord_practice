@@ -1,2 +1,4 @@
-/tmp/*
-!/tmp/.gitkeep
+/tmp/
+/bin/
+/config/*
+!/config/routes.rb
