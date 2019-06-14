@@ -66,5 +66,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # kaminari
 gem 'kaminari', '~> 0.17.0'
  
-# device
-gem 'device'
+# devise
+gem 'devise'
