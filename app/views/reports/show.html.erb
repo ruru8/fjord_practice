@@ -15,7 +15,7 @@
 <br>
 <br>
 <h2><strong><%= t :comment %></strong></h2>
-<% @report.comments.each do |comment| %>
+<% @comments.each do |comment| %>
   
   <p>
     <strong><%= t :name %>:</strong>
@@ -27,6 +27,7 @@
     <%= link_to '[x]', report_comment_path(@report, comment), method: :delete, data: { confirm: t('confirm') } %>
   </p>
 <% end %>
+<%= paginate @comments %>
 <br>
 <%= form_for( [@report, @report.comments.build] ) do |f| %>
   <p>
