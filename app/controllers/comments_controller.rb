@@ -20,20 +20,16 @@ class CommentsController < ApplicationController
     redirect_to @commentable, notice: 'Comment was successfully destroyed.'
   end
 
-
-
   private
-  # URLからBookかReportを取得する
-  # ex: /books/:id/comments
-  # ex: /reports/:id/comments
-  def load_commentable
-    resource, id = request.path.split('/')[1, 2]
-    @commentable = resource.singularize.classify.constantize.find(id)
-  end
+    # URLからBookかReportを取得する
+    # ex: /books/:id/comments
+    # ex: /reports/:id/comments
+    def load_commentable
+      resource, id = request.path.split('/')[1, 2]
+      @commentable = resource.singularize.classify.constantize.find(id)
+    end
 
-  def comment_params
-    params.require(:comment).permit(:name, :content)
-  end
-
-
+    def comment_params
+      params.require(:comment).permit(:name, :content)
+    end
 end
