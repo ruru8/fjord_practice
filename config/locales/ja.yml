@@ -3,7 +3,7 @@ ja:
     submit:
       create: "作成する"
       update: "更新する"
-      
+
   create: "作成しました"
   update: "更新しました"
   destroy: "削除しました"
@@ -27,6 +27,4 @@ ja:
   delete: "削除"
   edit: "編集する"
   back: "戻る"
-
-  
   
