@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <label><%= t('title') %></label>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :memo %>
+    <label><%= t('memo') %></label>
     <%= form.text_area :memo %>
   </div>
 
   <div class="field">
-    <%= form.label :author %>
+    <label><%= t('author') %></label>
     <%= form.text_field :author, id: :book_author %>
   </div>
 
   <div class="field">
-   <%= form.label :picture %>
-    <%= form.file_field :picture, id: :book_picture %>
+   <label><%= t('picture') %></label>
+   <%= form.file_field :picture, id: :book_picture %>
   </div>
 
   <div class="actions">

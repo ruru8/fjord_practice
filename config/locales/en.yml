@@ -30,4 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  create: successfully created.
+  destroy: successfully destroyed.
+  update: successfully updated.
+  confirm: Are you sure?
+  
