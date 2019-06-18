@@ -68,3 +68,10 @@ gem 'kaminari', '~> 0.17.0'
  
 # devise
 gem 'devise'
+
+gem 'omniauth'
+
+gem 'omniauth-github'
+
+# .envに記載した環境変数を認識させる
+gem 'dotenv-rails'
