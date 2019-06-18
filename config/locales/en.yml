@@ -30,8 +30,31 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  helpers:
+    submit:
+      create: create
+      update: update
+
   create: successfully created.
   destroy: successfully destroyed.
   update: successfully updated.
   confirm: Are you sure?
-  
+
+  reports: Reports
+  report: Report
+  books: Books
+  book: Book
+  title: Title
+  content: Content
+  memo: Memo
+  author: Author
+  picture: Picture
+  new: New
+  comment: Comment
+  name: Name
+  editing: Editing
+
+  show: Show
+  delete: Delete
+  edit: Edit
+  back: Back
