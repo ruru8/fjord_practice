@@ -63,5 +63,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+<<<<<<< HEAD
 # kaminari
 gem 'kaminari', '~> 0.17.0'
+=======
+# エラーメッセージの日本語化
+gem 'rails-i18n'
+>>>>>>> 8fcd807da771f2e72315e1c014ad35c5f51ee0fe
