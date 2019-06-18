@@ -11,13 +11,13 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.create(comment_params)
-    redirect_to @commentable, notice: 'Comment was successfully created.'
+    redirect_to @commentable, notice: t('create')
   end
 
   def destroy
     @comment = @commentable.comments.find(params[:id])
     @comment.destroy
-    redirect_to @commentable, notice: 'Comment was successfully destroyed.'
+    redirect_to @commentable, notice: t('destroy')
   end
 
   private

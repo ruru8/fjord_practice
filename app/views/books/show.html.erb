@@ -1,27 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong><%= t :title %>:</strong>
   <%= @book.title %>
 </p>
 
 <p>
-  <strong>Memo:</strong>
+  <strong><%= t :memo %>:</strong>
   <%= @book.memo %>
 </p>
 
 <p>
-  <strong>Author:</strong>
+  <strong><%= t :author %>:</strong>
   <%= @book.author %>
 </p>
 
 <p>
-  <strong>Picture:</strong>
+  <strong><%= t :picture %>:</strong>
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<%= link_to t('edit'), edit_book_path(@book) %> |
+<%= link_to t('back'), books_path %>
 <br>
 <br>
 <h2><strong><%= t :comment %></strong></h2>
@@ -34,7 +34,7 @@
    
   <p>
     <%= comment.content %>
-    <%= link_to '[x]', book_comment_path(@book, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to '[x]', book_comment_path(@book, comment), method: :delete, data: { confirm: t('confirm') } %>
   </p>
 <% end %>
 <br>

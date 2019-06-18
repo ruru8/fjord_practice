@@ -1,0 +1,46 @@
+ja:
+  helpers:
+    submit:
+      create: "作成する"
+      update: "更新する"
+      
+  activerecord:
+    models:
+      book: "本"
+      report: "日報"
+    attributes:
+      book:
+        title: "タイトル"
+        memo: "メモ"
+        picture: "写真"
+        author: "著者"
+      report: 
+        title: "タイトル"
+        content: "内容"
+      comment: 
+        name: "名前"
+        content: "内容"
+
+  create: "作成しました"
+  update: "更新しました"
+  destroy: "削除しました"
+  confirm: "本当に削除しますか?"
+
+  reports: "日報一覧"
+  report: "日報"
+  books: "本一覧"
+  book: "本"
+  title: "タイトル"
+  content: "内容"
+  memo: "メモ"
+  author: "著者"
+  picture: "写真"
+  new: "新規"
+  comment: "コメント"
+  name: "名前"
+  editing: "編集"
+
+  show: "表示"
+  delete: "削除"
+  edit: "編集"
+  back: "戻る"
