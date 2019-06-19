@@ -1,6 +1,6 @@
 <h1>Profile</h1>
 <p>名前 : <%= current_user.name %></p>
-<p>画像 : </p><%= image_tag (current_user.image) %>
+<p>画像 : <%= current_user.image.attached? ? image_tag(current_user.image, :size => "100x100") : "画像はありません" %></p>
 <p>プロフィール : <%= current_user.profile %></p>
 <p>郵便番号 : <%= current_user.zip %></p>
 <p>住所 : <%= current_user.address %></p>

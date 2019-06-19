@@ -10,8 +10,8 @@
 
   <div class="field">
     <%= f.label :image %><br />
-    <%=  image_tag(current_user.image) %><br />
-    <%= f.file_field :image, autofocus: true %>
+    <%= current_user.image.attached? ? image_tag(current_user.image, :size => "100x100") : "画像はありません" %> <br />
+    <%= f.file_field :image, autofocus: true %><br />
   </div>
 
   <div class="field">
