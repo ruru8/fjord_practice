@@ -65,5 +65,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # kaminari
 gem 'kaminari', '~> 0.17.0'
-# エラーメッセージの日本語化
+
 gem 'rails-i18n'

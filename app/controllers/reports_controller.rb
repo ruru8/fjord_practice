@@ -1,16 +1,17 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
+  PER = 5
 
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.page(params[:page]).per(5)
+    @reports = Report.page(params[:page]).per(PER)
   end
 
   # GET /reports/1
   # GET /reports/1.json
   def show
-    @comments = @report.comments.page(params[:page]).per(5)
+    @comments = @report.comments.page(params[:page]).per(PER)
   end
 
   # GET /reports/new
