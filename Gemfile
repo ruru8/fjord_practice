@@ -64,5 +64,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'kaminari', '~> 0.17.0'
+ 
+gem 'devise'
 
 gem 'rails-i18n'
