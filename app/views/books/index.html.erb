@@ -25,6 +25,7 @@
         <td><%= link_to t('delete'), book, method: :delete, data: { confirm: t('confirm') } %></td>
       </tr>
     <% end %>
+    <%= paginate @books %>
   </tbody>
 </table>
 

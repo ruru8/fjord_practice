@@ -21,6 +21,7 @@
         <td><%= link_to t('delete'), report, method: :delete, data: { confirm: t('confirm') } %></td>
       </tr>
     <% end %>
+    <%= paginate @reports %>
   </tbody>
 </table>
 
