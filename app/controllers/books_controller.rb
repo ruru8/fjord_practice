@@ -1,17 +1,16 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  PER = 5
 
   # GET /books
   # GET /books.json
   def index
-    @books = Book.page(params[:page]).per(PER)
+    @books = Book.page(params[:page])
   end
 
   # GET /books/1
   # GET /books/1.json
   def show
-    @comments = @book.comments.page(params[:page]).per(PER)
+    @comments = @book.comments.page(params[:page])
   end
 
   # GET /books/new
