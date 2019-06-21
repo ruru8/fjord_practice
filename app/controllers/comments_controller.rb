@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :load_commentable
 
   def index
-    @comments = @commentable.comments.page(params[:page]).per(5)
+    @comments = @commentable.comments.page(params[:page])
   end
 
   def new

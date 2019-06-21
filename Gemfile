@@ -63,15 +63,15 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# kaminari
+gem 'rails-i18n'
+
 gem 'kaminari', '~> 0.17.0'
  
-# devise
 gem 'devise'
 
 gem 'omniauth'
 
 gem 'omniauth-github'
 
-# .envに記載した環境変数を認識させる
 gem 'dotenv-rails'
+

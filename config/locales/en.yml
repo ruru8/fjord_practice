@@ -34,6 +34,23 @@ en:
     submit:
       create: create
       update: update
+  
+  activerecord:
+    models:
+      book: book
+      report: report
+    attributes:
+      book:
+        title: title
+        memo: memo
+        picture: picture
+        author: author
+      report: 
+        title: title
+        content: content
+      comment: 
+        name: name
+        content: content
 
   create: successfully created.
   destroy: successfully destroyed.
