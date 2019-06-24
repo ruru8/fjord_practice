@@ -1,6 +1,6 @@
 <h1><%= @user.name %>のマイページ </h1>
-<%= link_to "following: #{@user.following.count}", following_user_path(@user) %>
-<%= link_to "followers: #{@user.followers.count}", followers_user_path(@user) %>
+<%= link_to "followings: #{@user.followings.count}", user_followings_path(@user) %>
+<%= link_to "followers: #{@user.followers.count}", user_followers_path(@user) %>
 <div>
   <%= @user.image.attached? ? image_tag(@user.image, :size => "100x100") : "画像はありません" %>
 </div>

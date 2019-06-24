@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :passive_following_relationships, class_name:  "FollowingRelationship",
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
-  has_many :following, through: :active_following_relationships, source: :followed
+  has_many :followings, through: :active_following_relationships, source: :followed
   has_many :followers, through: :passive_following_relationships, source: :follower
 
   def self.create_unique_string
@@ -42,7 +42,7 @@ class User < ApplicationRecord
   end
 
   def follow(other_user)
-    following << other_user
+    followings << other_user
   end
 
   def unfollow(other_user)
@@ -50,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def following?(other_user)
-    following.include?(other_user)
+    followings.include?(other_user)
   end
 
 end

@@ -6,16 +6,20 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+end
 
-  def following
-    @user = User.find(params[:id])
-    @users = @user.following
-    render 'show_follow'
+class Users::FollowingsController < ApplicationController
+  def index
+    @user = User.find(params[:user_id])
+    @users = @user.followings
+    render 'users/show_follow'
   end
+end
 
-  def followers
-    @user = User.find(params[:id])
+class Users::FollowersController < ApplicationController
+  def index
+    @user = User.find(params[:user_id])
     @users = @user.followers
-    render 'show_follower'
+    render 'users/show_follower'
   end
 end
