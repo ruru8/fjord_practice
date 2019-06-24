@@ -7,8 +7,6 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i(github)
 
   validates :name, presence: true
-  validates :email, presence: true
-  validates :password, presence:true
   validates :profile, length: { maximum: 200 }
 
   has_many :active_relationships, class_name:  "Relationship",

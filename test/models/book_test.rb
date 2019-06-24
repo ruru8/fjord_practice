@@ -10,7 +10,7 @@ class BookTest < ActiveSupport::TestCase
   end
 
   test "title should be present" do
-    @book.title = ""
+    @book.title = nil
     assert_not @book.valid?
   end
 end

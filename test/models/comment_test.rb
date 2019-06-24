@@ -15,12 +15,12 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "name shoud be valid by Book" do
-    @book_comment.name = ""
+    @book_comment.name = nil
     assert_not @book_comment.valid?
   end
 
   test "name shoud be valid by Report" do
-    @report_comment.name = ""
+    @report_comment.name = nil
     assert_not @report_comment.valid?
   end
 

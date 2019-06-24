@@ -10,7 +10,7 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test "title should be present" do
-    @report.title = ""
+    @report.title = nil
     assert_not @report.valid?
   end
 end

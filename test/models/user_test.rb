@@ -7,26 +7,16 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "shoud be valid" do
-    @user.valid?
+    assert @user.valid?
   end
 
   test "name should be present" do
-    @user.name = ""
-    assert_not @user.valid?
-  end
-
-  test "email should be present" do
-    @user.email = ""
-    assert_not @user.valid?
-  end
-
-  test "password should be present" do
-    @user.password = ""
+    @user.name = nil
     assert_not @user.valid?
   end
 
   test "profile should not be too long" do
-    @user.name = "a" * 201
+    @user.profile = "a" * 201
     assert_not @user.valid?
   end
 end
