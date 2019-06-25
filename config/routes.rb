@@ -5,10 +5,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   resources :users do
-    member do
-      get :following
-      get :followers
-    end
+    resources :followees, only: [:index], module: 'users'
+    resources :followers, only: [:index], module: 'users'
   end
   resources :books do 
     resources :comments, only: [:create, :destroy ]
@@ -16,6 +14,6 @@ Rails.application.routes.draw do
   resources :reports do
     resources :comments, only: [:create, :destroy ]
   end
-  resources :relationships, only: [:create, :destroy]  
+  resources :followings, only: [:create, :destroy]  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

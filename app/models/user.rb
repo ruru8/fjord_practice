@@ -9,14 +9,14 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :profile, length: { maximum: 200 }
 
-  has_many :active_relationships, class_name:  "Relationship",
+  has_many :active_followings, class_name:  "Following",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
-                                   foreign_key: "followed_id",
+  has_many :passive_followings, class_name:  "Following",
+                                   foreign_key: "followee_id",
                                    dependent:   :destroy
-  has_many :following, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :followees, through: :active_followings, source: :followee
+  has_many :followers, through: :passive_followings, source: :follower
 
   def self.create_unique_string
     SecureRandom.uuid
@@ -42,15 +42,15 @@ class User < ApplicationRecord
   end
 
   def follow(other_user)
-    following << other_user
+    followees << other_user
   end
 
   def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
+    active_followings.find_by(followee_id: other_user.id).destroy
   end
 
   def following?(other_user)
-    following.include?(other_user)
+    followees.include?(other_user)
   end
 
 end
