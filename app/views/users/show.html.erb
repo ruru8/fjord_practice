@@ -1,5 +1,5 @@
 <h1><%= @user.name %>のマイページ </h1>
-<%= link_to "followings: #{@user.followings.count}", user_followings_path(@user) %>
+<%= link_to "followees: #{@user.followees.count}", user_followees_path(@user) %>
 <%= link_to "followers: #{@user.followers.count}", user_followers_path(@user) %>
 <div>
   <%= @user.image.attached? ? image_tag(@user.image, :size => "100x100") : "画像はありません" %>
@@ -17,13 +17,13 @@
 <% else %>
   <div id="follow_form">
   <% if current_user.following?(@user) %>
-    <%= form_for(current_user.active_following_relationships.find_by(followed_id: @user.id),
+    <%= form_for(current_user.active_followings.find_by(followee_id: @user.id),
              html: { method: :delete }) do |f| %>
       <%= f.submit "Unfollow", class: "btn" %>
     <% end %>
   <% else %>
-    <%= form_for(current_user.active_following_relationships.build) do |f| %>
-      <div><%= hidden_field_tag :followed_id, @user.id %></div>
+    <%= form_for(current_user.active_followings.build) do |f| %>
+      <div><%= hidden_field_tag :followee_id, @user.id %></div>
       <%= f.submit "Follow", class: "btn" %>
     <% end %>
   <% end %>
