@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  content: MyText
-  commentable: one(Book)
+  name: test1
+  content: test1
+  commentable: two(Book)
 
 two:
-  name: MyString
-  content: MyText
-  commentable: one(Report)
+  name: test2
+  content: twst2
+  commentable: two(Report)
 
