@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :users do
+  resources :users, only: [:index, :show] do
     resources :followees, only: [:index], module: 'users'
     resources :followers, only: [:index], module: 'users'
   end
