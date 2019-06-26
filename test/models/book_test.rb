@@ -14,4 +14,3 @@ class BookTest < ActiveSupport::TestCase
     assert_not @book.valid?
   end
 end
-

@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ReportsTest < ApplicationSystemTestCase
   def setup
-    @report= reports(:one)
+    @report = reports(:one)
     @user = users(:one)
     log_in(@user)
   end

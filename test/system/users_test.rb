@@ -2,8 +2,8 @@ require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
   def setup
-      @user = users(:one)
-      log_in(@user)
+    @user = users(:one)
+    log_in(@user)
   end
 
   test "visiting the index" do
