@@ -9,6 +9,15 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :profile, length: { maximum: 200 }
 
+  has_many :active_followings, class_name:  "Following",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
+  has_many :passive_followings, class_name:  "Following",
+                                   foreign_key: "followee_id",
+                                   dependent:   :destroy
+  has_many :followees, through: :active_followings, source: :followee
+  has_many :followers, through: :passive_followings, source: :follower
+
   def self.create_unique_string
     SecureRandom.uuid
   end
@@ -31,4 +40,17 @@ class User < ApplicationRecord
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
   end
+
+  def follow(other_user)
+    followees << other_user
+  end
+
+  def unfollow(other_user)
+    active_followings.find_by(followee_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    followees.include?(other_user)
+  end
+
 end
