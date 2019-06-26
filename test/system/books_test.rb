@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class BooksTest < ApplicationSystemTestCase
@@ -26,7 +28,7 @@ class BooksTest < ApplicationSystemTestCase
 
   test "updating a Book" do
     visit books_url
-    first('tbody tr').click_on 'Edit'
+    first("tbody tr").click_on "Edit"
 
     fill_in "book[title]", with: @book.title
     fill_in "book[memo]", with: @book.memo
@@ -40,7 +42,7 @@ class BooksTest < ApplicationSystemTestCase
   test "destroying a Book" do
     visit books_url
     page.accept_confirm do
-      first('tbody tr').click_on 'Delete'
+      first("tbody tr").click_on "Delete"
     end
 
     assert_text "destroyed"

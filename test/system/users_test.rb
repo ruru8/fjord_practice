@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
@@ -10,7 +12,7 @@ class UsersTest < ApplicationSystemTestCase
     visit users_url
     assert_selector "h1", text: "ユーザー一覧"
   end
-  
+
   test "show user" do
     visit users_url
     click_on "#{@user.name}"
@@ -30,5 +32,4 @@ class UsersTest < ApplicationSystemTestCase
     click_on "followers"
     assert_selector "h1", text: "フォロワー"
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
 
@@ -29,7 +31,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: t('create') }
+        format.html { redirect_to @report, notice: t("create") }
         format.json { render :show, status: :created, location: @report }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to @report, notice: t('update') }
+        format.html { redirect_to @report, notice: t("update") }
         format.json { render :show, status: :ok, location: @report }
       else
         format.html { render :edit }
@@ -57,7 +59,7 @@ class ReportsController < ApplicationController
   def destroy
     @report.destroy
     respond_to do |format|
-      format.html { redirect_to reports_url, notice: t('destroy') }
+      format.html { redirect_to reports_url, notice: t("destroy") }
       format.json { head :no_content }
     end
   end

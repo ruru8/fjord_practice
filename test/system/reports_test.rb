@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class ReportsTest < ApplicationSystemTestCase
@@ -26,7 +28,7 @@ class ReportsTest < ApplicationSystemTestCase
 
   test "updating a report" do
     visit reports_url
-    first('tbody tr').click_on 'Edit'
+    first("tbody tr").click_on "Edit"
 
     fill_in "report[title]", with: @report.title
     fill_in "report[content]", with: @report.content
@@ -40,7 +42,7 @@ class ReportsTest < ApplicationSystemTestCase
   test "destroying a report" do
     visit reports_url
     page.accept_confirm do
-      first('tbody tr').click_on 'Delete'
+      first("tbody tr").click_on "Delete"
     end
 
     assert_text "destroyed"

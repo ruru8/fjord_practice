@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class FollowingsTest < ApplicationSystemTestCase
@@ -22,7 +24,7 @@ class FollowingsTest < ApplicationSystemTestCase
     visit users_url
     click_on "test3"
 
-    click_on 'Unfollow'
+    click_on "Unfollow"
     assert_text "unfollow"
   end
 end

@@ -1,7 +1,8 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 class FollowingTest < ActiveSupport::TestCase
-
   def setup
     @following = Following.new(follower_id: users(:one).id,
                                followee_id: users(:two).id)

@@ -1,4 +1,6 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 class CommentTest < ActiveSupport::TestCase
   def setup
@@ -23,5 +25,4 @@ class CommentTest < ActiveSupport::TestCase
     @report_comment.name = nil
     assert_not @report_comment.valid?
   end
-
 end
