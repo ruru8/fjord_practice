@@ -4,11 +4,7 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = users(:one)
-  end
-
-  test "shoud be valid" do
-    assert @user.valid?
+    @user = users(:user1)
   end
 
   test "name should be present" do

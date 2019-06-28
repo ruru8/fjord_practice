@@ -4,12 +4,8 @@ require "test_helper"
 
 class FollowingTest < ActiveSupport::TestCase
   def setup
-    @following = Following.new(follower_id: users(:one).id,
-                               followee_id: users(:two).id)
-  end
-
-  test "should be valid" do
-    assert @following.valid?
+    @following = Following.new(follower_id: users(:user1).id,
+                               followee_id: users(:user2).id)
   end
 
   test "should require a follower_id" do
