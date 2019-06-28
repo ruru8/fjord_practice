@@ -6,7 +6,7 @@ class ReportsTest < ApplicationSystemTestCase
   def setup
     @report = reports(:one)
     @user = users(:one)
-    log_in(@user)
+    login_as(@user)
   end
 
   test "visiting the index" do

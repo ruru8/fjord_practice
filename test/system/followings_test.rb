@@ -7,7 +7,7 @@ class FollowingsTest < ApplicationSystemTestCase
     @user = users(:one)
     @user3 = users(:three)
     @user.follow(@user3)
-    log_in(@user)
+    login_as(@user)
   end
 
   test "creating a followings" do

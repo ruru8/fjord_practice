@@ -8,7 +8,7 @@ class CommentsTest < ApplicationSystemTestCase
     @book = books(:one)
     @comment = comments(:one)
     @user = users(:one)
-    log_in(@user)
+    login_as(@user)
   end
 
   test "visiting the index in Books" do

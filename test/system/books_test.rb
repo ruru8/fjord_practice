@@ -6,7 +6,7 @@ class BooksTest < ApplicationSystemTestCase
   def setup
     @book = books(:one)
     @user = users(:one)
-    log_in(@user)
+    login_as(@user)
   end
 
   test "visiting the index" do
