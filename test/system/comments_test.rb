@@ -4,10 +4,10 @@ require "application_system_test_case"
 
 class CommentsTest < ApplicationSystemTestCase
   def setup
-    @report = reports(:one)
-    @book = books(:one)
-    @comment = comments(:one)
-    @user = users(:one)
+    @report = reports(:report1)
+    @book = books(:book1)
+    @comment = comments(:comment1)
+    @user = users(:user1)
     login_as(@user)
   end
 

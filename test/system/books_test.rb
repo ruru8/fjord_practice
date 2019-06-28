@@ -4,8 +4,8 @@ require "application_system_test_case"
 
 class BooksTest < ApplicationSystemTestCase
   def setup
-    @book = books(:one)
-    @user = users(:one)
+    @book = books(:book1)
+    @user = users(:user1)
     login_as(@user)
   end
 

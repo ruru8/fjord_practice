@@ -4,8 +4,8 @@ require "application_system_test_case"
 
 class FollowingsTest < ApplicationSystemTestCase
   def setup
-    @user = users(:one)
-    @user3 = users(:three)
+    @user = users(:user1)
+    @user3 = users(:user3)
     @user.follow(@user3)
     login_as(@user)
   end

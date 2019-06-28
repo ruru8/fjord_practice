@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+comment1:
   name: test1
   content: test1
-  commentable: two(Book)
+  commentable: book1(Book)
 
-two:
+comment2:
   name: test2
   content: twst2
-  commentable: two(Report)
+  commentable: report1(Report)

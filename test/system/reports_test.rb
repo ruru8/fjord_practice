@@ -4,8 +4,8 @@ require "application_system_test_case"
 
 class ReportsTest < ApplicationSystemTestCase
   def setup
-    @report = reports(:one)
-    @user = users(:one)
+    @report = reports(:report1)
+    @user = users(:user1)
     login_as(@user)
   end
 
