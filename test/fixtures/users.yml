@@ -8,6 +8,8 @@ user1:
   name: "test"
   email: "test@test"
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  provider: "test"
+  uid : "aaa"
 
 user2:
   name: "test2"
@@ -18,3 +20,8 @@ user3:
   name: "test3"
   email: "test3@test"
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+user_github:
+  name: test4
+  provider: "github"
+  uid: "12345"
