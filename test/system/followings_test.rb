@@ -17,7 +17,6 @@ class FollowingsTest < ApplicationSystemTestCase
     click_button "Follow"
 
     assert_text "follow"
-    click_on "Back"
   end
 
   test "destroying a followings" do

@@ -32,7 +32,6 @@ class CommentsTest < ApplicationSystemTestCase
     click_on "create"
 
     assert_text "create"
-    click_on "Back"
   end
 
   test "creating a comment in Reports" do
@@ -44,7 +43,6 @@ class CommentsTest < ApplicationSystemTestCase
     click_on "create"
 
     assert_text "create"
-    click_on "Back"
   end
 
   test "destroying a comment in Books" do

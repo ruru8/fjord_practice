@@ -23,7 +23,6 @@ class BooksTest < ApplicationSystemTestCase
     click_on "create"
 
     assert_text "create"
-    click_on "Back"
   end
 
   test "updating a Book" do
@@ -36,7 +35,6 @@ class BooksTest < ApplicationSystemTestCase
     click_on "update"
 
     assert_text "updated"
-    click_on "Back"
   end
 
   test "destroying a Book" do

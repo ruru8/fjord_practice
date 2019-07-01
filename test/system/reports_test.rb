@@ -23,7 +23,6 @@ class ReportsTest < ApplicationSystemTestCase
     click_on "create"
 
     assert_text "create"
-    click_on "Back"
   end
 
   test "updating a report" do
@@ -36,7 +35,6 @@ class ReportsTest < ApplicationSystemTestCase
     click_on "update"
 
     assert_text "updated"
-    click_on "Back"
   end
 
   test "destroying a report" do
