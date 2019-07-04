@@ -10,7 +10,7 @@ class FollowingsTest < ApplicationSystemTestCase
     login_as(@user)
   end
 
-  test "creating a followings" do
+  test "create a followings" do
     visit users_url
     click_on "test2"
 
@@ -19,7 +19,7 @@ class FollowingsTest < ApplicationSystemTestCase
     assert_text "follow"
   end
 
-  test "destroying a followings" do
+  test "destroy a followings" do
     visit users_url
     click_on "test3"
 

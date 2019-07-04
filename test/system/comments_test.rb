@@ -11,19 +11,19 @@ class CommentsTest < ApplicationSystemTestCase
     login_as(@user)
   end
 
-  test "visiting the index in Books" do
+  test "visit the index in Books" do
     visit books_url
     first("tbody tr").click_on "Show"
     assert_selector "h2", text: "Comment"
   end
 
-  test "visiting the index in Reports" do
+  test "visit the index in Reports" do
     visit reports_url
     first("tbody tr").click_on "Show"
     assert_selector "h2", text: "Comment"
   end
 
-  test "creating a comment in Books" do
+  test "create a comment in Books" do
     visit books_url
     first("tbody tr").click_on "Show"
 
@@ -34,7 +34,7 @@ class CommentsTest < ApplicationSystemTestCase
     assert_text "create"
   end
 
-  test "creating a comment in Reports" do
+  test "create a comment in Reports" do
     visit reports_url
     first("tbody tr").click_on "Show"
 
@@ -45,7 +45,7 @@ class CommentsTest < ApplicationSystemTestCase
     assert_text "create"
   end
 
-  test "destroying a comment in Books" do
+  test "destroy a comment in Books" do
     visit books_url
     first("tbody tr").click_on "Show"
 
@@ -56,7 +56,7 @@ class CommentsTest < ApplicationSystemTestCase
     assert_text "destroyed"
   end
 
-  test "destroying a comment in Reports" do
+  test "destroy a comment in Reports" do
     visit reports_url
     first("tbody tr").click_on "Show"
 

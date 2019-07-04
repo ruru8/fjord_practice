@@ -9,12 +9,12 @@ class BooksTest < ApplicationSystemTestCase
     login_as(@user)
   end
 
-  test "visiting the index" do
+  test "visit the index" do
     visit books_url
     assert_selector "h1", text: "Books"
   end
 
-  test "creating a Book" do
+  test "create a Book" do
     visit books_url
     click_on "New"
 
@@ -25,7 +25,7 @@ class BooksTest < ApplicationSystemTestCase
     assert_text "create"
   end
 
-  test "updating a Book" do
+  test "update a Book" do
     visit books_url
     first("tbody tr").click_on "Edit"
 
@@ -37,7 +37,7 @@ class BooksTest < ApplicationSystemTestCase
     assert_text "updated"
   end
 
-  test "destroying a Book" do
+  test "destroy a Book" do
     visit books_url
     page.accept_confirm do
       first("tbody tr").click_on "Delete"

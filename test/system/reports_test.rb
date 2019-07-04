@@ -9,12 +9,12 @@ class ReportsTest < ApplicationSystemTestCase
     login_as(@user)
   end
 
-  test "visiting the index" do
+  test "visit the index" do
     visit reports_url
     assert_selector "h1", text: "Reports"
   end
 
-  test "creating a report" do
+  test "create a report" do
     visit reports_url
     click_on "New"
 
@@ -25,7 +25,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text "create"
   end
 
-  test "updating a report" do
+  test "update a report" do
     visit reports_url
     first("tbody tr").click_on "Edit"
 
@@ -37,7 +37,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text "updated"
   end
 
-  test "destroying a report" do
+  test "destroy a report" do
     visit reports_url
     page.accept_confirm do
       first("tbody tr").click_on "Delete"
