@@ -5,23 +5,23 @@
 # below each fixture, per the syntax in the comments below
 #
 user1:
-  name: "test"
-  email: "test@test"
+  name: "tanaka"
+  email: "tanaka@test"
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-  provider: "test"
-  uid : "aaa"
+  provider: "github"
+  uid : "000"
 
 user2:
-  name: "test2"
-  email: "test2@test"
+  name: "鈴木"
+  email: "suzuki@test"
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 user3:
-  name: "test3"
-  email: "test3@test"
+  name: "satou"
+  email: "satou@test"
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 user_github:
-  name: test4
+  name: "hayashi"
   provider: "github"
   uid: "12345"

@@ -12,7 +12,7 @@ class FollowingsTest < ApplicationSystemTestCase
 
   test "create a followings" do
     visit users_url
-    click_on "test2"
+    click_on "鈴木"
 
     click_button "Follow"
 
@@ -21,7 +21,7 @@ class FollowingsTest < ApplicationSystemTestCase
 
   test "destroy a followings" do
     visit users_url
-    click_on "test3"
+    click_on "satou"
 
     click_on "Unfollow"
     assert_text "unfollow"

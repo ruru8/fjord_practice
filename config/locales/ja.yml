@@ -26,6 +26,9 @@ ja:
   destroy: "削除しました"
   confirm: "本当に削除しますか?"
 
+  follow: "フォローしました"
+  unfollow: "フォローを解除しました"
+
   reports: "日報一覧"
   report: "日報"
   books: "本一覧"

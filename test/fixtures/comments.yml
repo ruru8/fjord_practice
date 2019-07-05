@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 comment1:
-  name: test1
-  content: test1
+  name: tarou
+  content: This is very interesting.
   commentable: book1(Book)
 
 comment2:
-  name: test2
-  content: twst2
+  name: hanako
+  content: Do your Best! I support you.
   commentable: report1(Report)

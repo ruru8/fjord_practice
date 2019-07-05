@@ -1,6 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 book1:
-  title: test1
-  memo: test1
-
+  title: This is a book
+  memo: mystery

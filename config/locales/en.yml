@@ -57,6 +57,9 @@ en:
   update: successfully updated.
   confirm: Are you sure?
 
+  follow: follow succsessfully.
+  unfollow: unfollow succsessfully.
+
   reports: Reports
   report: Report
   books: Books

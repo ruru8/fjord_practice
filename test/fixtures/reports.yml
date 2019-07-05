@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 report1:
-  title: MyString
-  content: MyText
+  title: Today
+  content: I am very happy!

@@ -21,7 +21,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user should be registered as it is when users have the same account as auth" do
-    user = User.new(provider: "test", uid: "aaa")
+    user = User.new(provider: "github", uid: "000")
     auth = User.find_for_github_oauth(user)
     assert @user == auth
   end
