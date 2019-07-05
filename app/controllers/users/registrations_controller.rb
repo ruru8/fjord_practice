@@ -60,14 +60,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def build_resource(hash={})
+  def build_resource(hash = {})
     hash[:uid] = User.create_unique_string
     super
   end
 
   protected
-  # アカウント編集後、プロフィール画面に移動する
-  def after_update_path_for(resource)
-    user_path(id: current_user.id)
-  end
+    # アカウント編集後、プロフィール画面に移動すd
+    def after_update_path_for(resource)
+      user_path(id: current_user.id)
+    end
 end

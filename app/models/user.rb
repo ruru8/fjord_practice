@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -22,7 +24,7 @@ class User < ApplicationRecord
     SecureRandom.uuid
   end
 
-  def self.find_for_github_oauth(auth, signed_in_resource=nil)
+  def self.find_for_github_oauth(auth, signed_in_resource = nil)
     user = User.find_by(provider: auth.provider, uid: auth.uid)
 
     unless user
@@ -52,5 +54,4 @@ class User < ApplicationRecord
   def following?(other_user)
     followees.include?(other_user)
   end
-
 end
